@@ -9,6 +9,7 @@ import SDWebImage
 import XCGLogger
 import SyncTelemetry
 import SnapKit
+import CaptainPlanet
 
 private let log = Logger.browserLogger
 
@@ -259,9 +260,10 @@ extension FirefoxHomeViewController {
         static let allValues = [topSites, libraryShortcuts, pocket]
 
         var title: String? {
+            let integration = SomeIntegration()
             switch self {
             case .pocket: return Strings.ASPocketTitle
-            case .topSites: return Strings.ASTopSitesTitle
+            case .topSites: return integration.getValue()
             case .libraryShortcuts: return Strings.AppMenuLibraryTitleString
             }
         }
